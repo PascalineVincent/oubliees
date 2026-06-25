@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Resultats – Oubliees ?</title>
+<title>Le rattrapage – Oubliees ?</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -74,6 +74,35 @@ ul.task-list li input[type="checkbox"] {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&amp;family=Source+Serif+4:opsz,wght@8..60,300;8..60,400&amp;family=IBM+Plex+Mono:wght@400&amp;display=swap" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -103,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Donnees et methode</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./resultats.html" aria-current="page"> 
+    <a class="nav-link" href="./resultats.html"> 
 <span class="menu-text">Resultats</span></a>
   </li>  
   <li class="nav-item">
@@ -115,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">L’effet Nobel</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./rattrapage.html"> 
+    <a class="nav-link active" href="./rattrapage.html" aria-current="page"> 
 <span class="menu-text">Le rattrapage</span></a>
   </li>  
   <li class="nav-item">
@@ -138,9 +167,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#resultat-1-lecart-de-persistance-memorielle" id="toc-resultat-1-lecart-de-persistance-memorielle" class="nav-link active" data-scroll-target="#resultat-1-lecart-de-persistance-memorielle">Resultat 1 – L’ecart de persistance memorielle</a></li>
-  <li><a href="#resultat-2-lecart-nest-pas-un-artefact-de-periode" id="toc-resultat-2-lecart-nest-pas-un-artefact-de-periode" class="nav-link" data-scroll-target="#resultat-2-lecart-nest-pas-un-artefact-de-periode">Resultat 2 – L’ecart n’est pas un artefact de periode</a></li>
-  <li><a href="#resultat-3-evolution-temporelle" id="toc-resultat-3-evolution-temporelle" class="nav-link" data-scroll-target="#resultat-3-evolution-temporelle">Resultat 3 – Evolution temporelle</a></li>
+  <li><a href="#deux-mecanismes-a-tester" id="toc-deux-mecanismes-a-tester" class="nav-link active" data-scroll-target="#deux-mecanismes-a-tester">Deux mecanismes a tester</a></li>
+  <li><a href="#methode-1-leffet-nobel-rappel" id="toc-methode-1-leffet-nobel-rappel" class="nav-link" data-scroll-target="#methode-1-leffet-nobel-rappel">Methode 1 – L’effet Nobel (rappel)</a></li>
+  <li><a href="#methode-2-leffet-de-la-revue-feminist-economics" id="toc-methode-2-leffet-de-la-revue-feminist-economics" class="nav-link" data-scroll-target="#methode-2-leffet-de-la-revue-feminist-economics">Methode 2 – L’effet de la revue Feminist Economics</a></li>
+  <li><a href="#synthese-deux-rattrapages-un-ecart-qui-persiste" id="toc-synthese-deux-rattrapages-un-ecart-qui-persiste" class="nav-link" data-scroll-target="#synthese-deux-rattrapages-un-ecart-qui-persiste">Synthese – deux rattrapages, un ecart qui persiste</a></li>
   </ul>
 </nav>
     </div>
@@ -149,8 +179,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Resultats</h1>
-<p class="subtitle lead">Les femmes economistes sont 5,4 fois moins citees – et l’ecart ne se resorbe pas</p>
+<h1 class="title">Le rattrapage</h1>
+<p class="subtitle lead">Deux mecanismes qui corrigent partiellement l’oubli – mais ne le resorbent pas</p>
 </div>
 
 
@@ -167,67 +197,97 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="resultat-1-lecart-de-persistance-memorielle" class="level2">
-<h2 class="anchored" data-anchor-id="resultat-1-lecart-de-persistance-memorielle">Resultat 1 – L’ecart de persistance memorielle</h2>
+<section id="deux-mecanismes-a-tester" class="level2">
+<h2 class="anchored" data-anchor-id="deux-mecanismes-a-tester">Deux mecanismes a tester</h2>
+<p>Dans la page Resultats, nous avons montre que l’ecart de persistance memorielle entre hommes et femmes ne se resorbe pas spontanement au cours du XXe siecle. Mais deux evenements institutionnels pourraient avoir change la donne :</p>
+<div class="two-questions">
+
+  <div class="question-card q1">
+    <div class="q-num">Mecanisme 1</div>
+    <h3 class="anchored">Le Prix Nobel</h3>
+    <p>
+      Trois femmes ont recu le Nobel d'economie : Ostrom (2009),
+      Duflo (2019), Goldin (2023). Est-ce que le prix provoque
+      un rattrapage de leur frequence de mention ?
+    </p>
+    <a href="./nobel.html" class="step-link">-&gt; Voir la page Nobel</a>
+  </div>
+
+  <div class="question-card q2">
+    <div class="q-num">Mecanisme 2</div>
+    <h3 class="anchored">La revue Feminist Economics</h3>
+    <p>
+      La revue <em>Feminist Economics</em> est fondee en 1995,
+      institutionnalisant le courant economiste feministe.
+      Est-ce que les femmes economistes sont plus mentionnees
+      apres 1995 qu'avant, relativement aux hommes ?
+    </p>
+  </div>
+
+</div>
+<hr>
+</section>
+<section id="methode-1-leffet-nobel-rappel" class="level2">
+<h2 class="anchored" data-anchor-id="methode-1-leffet-nobel-rappel">Methode 1 – L’effet Nobel (rappel)</h2>
+<p>La methode est expliquee en detail sur la <a href="./nobel.html">page Nobel</a>. En resume : on compare la frequence Ngram de chaque laureate <strong>avant</strong> et <strong>apres</strong> l’annee du prix, et on compare ce ratio a celui de ses co-laureats masculins la meme annee.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="resultats_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Distribution de la persistance memorielle (log frequence Ngram moyenne 1950-2000) par genre. Chaque point est un economiste. La boite montre les quartiles ; la ligne centrale est la mediane.</figcaption>
+<p><img src="rattrapage_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Ratio frequence apres/avant le Nobel. Les femmes laureates beneficient d’un rattrapage plus fort que leurs co-laureats masculins.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><em>Note : l’axe vertical est en echelle logarithmique. Un ecart d’une unite correspond a un facteur multiplicatif e (environ 2,7). L’ecart median observe entre femmes et hommes est de 1,69 unites log, soit un facteur 5,4.</em></p>
-<div class="result-callout positive">
-  <div class="result-icon">x5,4</div>
-  <div class="result-body">
-    <div class="result-number">+1,69 ***</div>
-    <div class="result-desc">
-      Coefficient OLS du genre masculin sur la log-frequence Ngram<br>
-      <span class="result-pval">p &lt; 0,001 -- significatif au seuil 0,1%</span><br>
-      <span style="color:#7A9DBF;font-size:0.85rem;">
-        Les hommes economistes sont mentionnes e^1,69 = 5,4 fois plus souvent
-        dans les livres publies entre 1950 et 2000.
-      </span>
-    </div>
-  </div>
-</div>
+<p><em>Note : Ostrom multiplie sa frequence par 2,3 apres le Nobel, contre 0,82 pour son co-laureat Williamson – qui voit sa frequence baisser, l’attention mediatique s’etant concentree sur Ostrom.</em></p>
 <hr>
 </section>
-<section id="resultat-2-lecart-nest-pas-un-artefact-de-periode" class="level2">
-<h2 class="anchored" data-anchor-id="resultat-2-lecart-nest-pas-un-artefact-de-periode">Resultat 2 – L’ecart n’est pas un artefact de periode</h2>
-<p>On pourrait objecter que les femmes economistes etaient surtout actives aux periodes les plus anciennes (XVIIIe-XIXe siecle), quand tout le monde est moins mentionne. Ce modele teste cette hypothese en controlant pour la tendance temporelle individuelle.</p>
-<div class="cell" data-tbl-cap="Trois modeles de persistance memorielle">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: There was 1 warning in `mutate()`.
-ℹ In argument: `across(c(estimate, std.error, p.value), round, 4)`.
-Caused by warning:
-! The `...` argument of `across()` is deprecated as of dplyr 1.1.0.
-Supply arguments directly to `.fns` through an anonymous function instead.
-
-  # Previously
-  across(a:b, mean, na.rm = TRUE)
-
-  # Now
-  across(a:b, \(x) mean(x, na.rm = TRUE))</code></pre>
+<section id="methode-2-leffet-de-la-revue-feminist-economics" class="level2">
+<h2 class="anchored" data-anchor-id="methode-2-leffet-de-la-revue-feminist-economics">Methode 2 – L’effet de la revue Feminist Economics</h2>
+<section id="comment-ca-marche-en-mots-simples" class="level3">
+<h3 class="anchored" data-anchor-id="comment-ca-marche-en-mots-simples">Comment ca marche en mots simples</h3>
+<p>On dispose des frequences annuelles Ngram pour 186 economistes sur la periode 1900-2000. Pour chaque annee et chaque individu, on observe combien de fois son nom est mentionne dans les livres.</p>
+<p>L’idee est simple : si la creation de <em>Feminist Economics</em> en 1995 a contribue a rehabiliter les femmes economistes dans la memoire collective, on devrait observer que les femmes sont <strong>davantage mentionnees apres 1995 qu’avant</strong>, et ce <strong>plus que les hommes</strong>.</p>
+<p>C’est exactement ce que mesure une <strong>difference-en-differences</strong> :</p>
+<div class="schema-box total" style="margin:1.5rem 0;padding:1.5rem;">
+  <h4 style="color:#C8B97A;margin-top:0;" class="anchored">La logique de la difference-en-differences</h4>
+  <p style="color:#D6E4F2;font-size:0.9rem;">
+    On compare <strong>deux differences</strong> :
+  </p>
+  <p style="color:#C8B97A;font-family:monospace;font-size:0.85rem;line-height:2;">
+    Difference 1 = freq femmes apres 1995 - freq femmes avant 1995<br>
+    Difference 2 = freq hommes apres 1995 - freq hommes avant 1995<br>
+    <br>
+    Effet = Difference 1 - Difference 2
+  </p>
+  <p style="color:#7A9DBF;font-size:0.85rem;">
+    Si l'effet est positif, les femmes ont plus augmente que les hommes
+    apres 1995 -- ce qui suggere un rattrapage lie a l'institutionnalisation
+    du courant feministe.
+  </p>
 </div>
+<p><strong>Pourquoi comparer aux hommes ?</strong> Parce que les frequences Ngram augmentent mecaniquement avec le temps – il y a plus de livres publies en 2000 qu’en 1980. Si on regardait seulement les femmes, on confondrait le rattrapage avec cette tendance generale. En comparant aux hommes, on isole ce qui est specifique aux femmes.</p>
+<p><strong>Les effets fixes individu</strong> : on controle aussi pour le fait que certains economistes sont toujours plus mentionnes que d’autres (Adam Smith sera toujours plus cite que Jane Marcet). On ne regarde que les <strong>variations</strong> autour de la moyenne de chaque individu.</p>
+</section>
+<section id="le-modele" class="level3">
+<h3 class="anchored" data-anchor-id="le-modele">Le modele</h3>
+<p><span class="math display">\[\ln(f_{it}) = \alpha_i + \beta_1 \cdot t + \beta_2 \cdot \text{post1995}_t \cdot \text{femme}_i + \varepsilon_{it}\]</span></p>
+<ul>
+<li><span class="math inline">\(\alpha_i\)</span> : effet fixe individu (capture le niveau moyen de chaque economiste)</li>
+<li><span class="math inline">\(\beta_1 \cdot t\)</span> : tendance temporelle commune</li>
+<li><span class="math inline">\(\beta_2\)</span> : <strong>le coefficient d’interet</strong> – le surcroit de mentions pour les femmes apres 1995, par rapport aux hommes</li>
+</ul>
+</section>
+<section id="les-resultats" class="level3">
+<h3 class="anchored" data-anchor-id="les-resultats">Les resultats</h3>
+<div class="cell" data-tbl-cap="Test de robustesse : coefficient DiD pour differentes annees de coupure. Si 1995 est special, le coefficient devrait etre plus fort pour cette annee que pour les autres.">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
-<caption>Trois modeles de persistance memorielle</caption>
-<colgroup>
-<col style="width: 27%">
-<col style="width: 25%">
-<col style="width: 15%">
-<col style="width: 15%">
-<col style="width: 11%">
-<col style="width: 5%">
-</colgroup>
+<caption>Test de robustesse : coefficient DiD pour differentes annees de coupure. Si 1995 est special, le coefficient devrait etre plus fort pour cette annee que pour les autres.</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Modele</th>
-<th style="text-align: left;">Variable</th>
+<th style="text-align: right;">Annee de coupure</th>
 <th style="text-align: right;">Coefficient</th>
 <th style="text-align: right;">Erreur-type</th>
 <th style="text-align: right;">p-valeur</th>
@@ -236,60 +296,87 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">M1 : genre seul</td>
-<td style="text-align: left;">Genre masculin</td>
-<td style="text-align: right;">1.6906</td>
-<td style="text-align: right;">0.3754</td>
-<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">1985</td>
+<td style="text-align: right;">0.4786</td>
+<td style="text-align: right;">0.0641</td>
+<td style="text-align: right;">0.00000</td>
 <td style="text-align: left;">***</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">M2 : genre + tendance</td>
-<td style="text-align: left;">Genre masculin</td>
-<td style="text-align: right;">1.6922</td>
-<td style="text-align: right;">0.3765</td>
-<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">1990</td>
+<td style="text-align: right;">0.6842</td>
+<td style="text-align: right;">0.0722</td>
+<td style="text-align: right;">0.00000</td>
 <td style="text-align: left;">***</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">M2 : genre + tendance</td>
-<td style="text-align: left;">Tendance temporelle</td>
-<td style="text-align: right;">0.0128</td>
-<td style="text-align: right;">0.0676</td>
-<td style="text-align: right;">0.8495</td>
-<td style="text-align: left;">ns</td>
+<td style="text-align: right;">1995</td>
+<td style="text-align: right;">0.8025</td>
+<td style="text-align: right;">0.0922</td>
+<td style="text-align: right;">0.00000</td>
+<td style="text-align: left;">***</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">M3 : tendance ~ genre</td>
-<td style="text-align: left;">Genre masculin</td>
-<td style="text-align: right;">-0.1251</td>
-<td style="text-align: right;">0.4105</td>
-<td style="text-align: right;">0.7610</td>
-<td style="text-align: left;">ns</td>
+<td style="text-align: right;">2000</td>
+<td style="text-align: right;">0.7880</td>
+<td style="text-align: right;">0.2151</td>
+<td style="text-align: right;">0.00025</td>
+<td style="text-align: left;">***</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p><em>Note : M1 = modele brut. M2 = avec controle de la tendance temporelle individuelle (log frequence 1950-2000 moins log frequence 1900-1950). M3 = la tendance temporelle est l’outcome – teste si les femmes connaissent un rattrapage. N=186. </em>** p&lt;0,001 ; ns = non significatif.*</p>
-<p>Les resultats montrent que :</p>
-<p><strong>1.</strong> L’effet genre dans M2 est identique a M1 (+1,69***) – la periode d’activite ne confond pas le resultat.</p>
-<p><strong>2.</strong> Dans M3, le coefficient du genre est non significatif (p=0,76) – il n’y a pas de rattrapage. Les femmes economistes ne sont pas progressivement rehabilitees dans la memoire disciplinaire entre la premiere et la seconde moitie du XXe siecle.</p>
-<hr>
-</section>
-<section id="resultat-3-evolution-temporelle" class="level2">
-<h2 class="anchored" data-anchor-id="resultat-3-evolution-temporelle">Resultat 3 – Evolution temporelle</h2>
+<p><em>Note : le coefficient est significatif pour toutes les annees de coupure testees. Il augmente progressivement de 1985 (+0,48) a 1995 (+0,80) puis se stabilise. Cela suggere que le rattrapage s’accelere precisement autour de 1995 – mais qu’un mouvement etait deja en cours depuis les annees 1980, probablement lie a la montee des gender studies dans les universites.</em></p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="resultats_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Evolution de la frequence Ngram moyenne par genre, 1900-2000. La bande represente l’ecart-type. Les femmes sont systematiquement sous les hommes sur toute la periode.</figcaption>
+<p><img src="rattrapage_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Visualisation du coefficient DiD selon l’annee de coupure. Le coefficient atteint son maximum autour de 1995, puis se stabilise.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><em>Note : l’ecart entre les deux courbes est stable sur toute la periode. Le pic visible pour les hommes vers 1940-1960 correspond probablement a l’essor des manuels d’economie keynesiennes qui citent abondamment Keynes, Hicks, Samuelson.</em></p>
+<p><em>Note : si le coefficient etait stable quelle que soit l’annee de coupure, on ne pourrait pas attribuer l’effet a 1995 en particulier. Le fait qu’il soit maximise autour de 1995 est coherent avec l’hypothese d’un effet de la revue, meme si d’autres facteurs contemporains (developpement d’Internet, institutionnalisation des gender studies) ont probablement joue un role.</em></p>
+<hr>
+</section>
+</section>
+<section id="synthese-deux-rattrapages-un-ecart-qui-persiste" class="level2">
+<h2 class="anchored" data-anchor-id="synthese-deux-rattrapages-un-ecart-qui-persiste">Synthese – deux rattrapages, un ecart qui persiste</h2>
+<div class="findings-summary">
+
+  <div class="finding significant">
+    <div class="finding-icon">↑</div>
+    <h4 class="anchored">Nobel : rattrapage fort et ponctuel</h4>
+    <p>
+      Ostrom x2,3 -- Duflo x1,7. Le prix corrige rapidement
+      l'ecart pour les laureates. Mais seulement 3 femmes
+      sur environ 95 laureats depuis 1969.
+    </p>
+  </div>
+
+  <div class="finding significant">
+    <div class="finding-icon">↑</div>
+    <h4 class="anchored">Feminist Economics : rattrapage lent et progressif</h4>
+    <p>
+      +0,80 log-points apres 1995 (+120% relativement aux hommes).
+      Un mouvement amorce dans les annees 1980 qui s'accelere
+      avec l'institutionnalisation du courant feministe.
+    </p>
+  </div>
+
+  <div class="finding null">
+    <div class="finding-icon">—</div>
+    <h4 class="anchored">Ecart brut : toujours x5,4</h4>
+    <p>
+      Malgre ces deux mecanismes de rattrapage, l'ecart global
+      sur 1950-2000 reste de 5,4. Les rattrapages sont reels
+      mais insuffisants pour combler le deficit accumule.
+    </p>
+  </div>
+
+</div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -300,7 +387,7 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Les femmes economistes sont systematiquement sous-representees dans la memoire disciplinaire, cet ecart est robuste a la periode d’activite, et il ne se resorbe pas au cours du XXe siecle.</p>
+<p>Il existe des mecanismes institutionnels de rattrapage – Nobel et institutionnalisation du courant feministe – mais ils sont trop partiels et trop recents pour combler un ecart de persistance memorielle accumule sur plus d’un siecle.</p>
 </div>
 </div>
 
